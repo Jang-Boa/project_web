@@ -13,4 +13,7 @@ class UserCreateForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired(),Email()]) # 이메일 
 
 # 로그인 폼 구현
-# class UserLoginForm(FlaskForm):
+class UserLoginForm(FlaskForm):
+    username = StringField('Username',validators=[DataRequired(), Length(min=3,max=25)]) # length로 길이 제한
+    password = PasswordField('Password', validators=[DataRequired()]) # password 
+    
