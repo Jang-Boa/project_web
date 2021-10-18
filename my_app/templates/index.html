@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>Hello World!</h4>
+    {% if session['userid'] %}
+        <h4>{{ userid }}님 요청 처리에 대한 페이지입니다.</h4>
+        <button type="button" onclick="location.href='/logout' ">로그아웃</button>
+    {% else %}
+        <h4>Hello World!</h4>
+        <button type="button" onclick="location.href='/prefer' ">추천받기</button>
+        <button type="button" onclick="location.href='/register' ">등록하기</button>
+        <button type="button" onclick="location.href='/login' ">로그인</button>
+    {% endif %}
+{% endblock %}
