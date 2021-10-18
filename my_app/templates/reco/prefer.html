@@ -2,6 +2,9 @@
 {% block content %}
 <div>
     <center>
+    <br>
+    <br>
+    <br>
     <h3>어떤 차량을 원하시나요</h3>
     <hr>
     </center>   
@@ -9,7 +12,7 @@
 
 <div align="center">
 <div align="center">
-<form method="POST" action="/prefer">
+<form method="GET" action="{{ url_for('reco.result') }}">
     <div class='choice'>
     <h5> 가격 </h5>
     <select id="price" name = "price" size = 7>
@@ -68,8 +71,9 @@
 
     <br>
     <br>
+    <input type="submit" value="ok" onClick="location.href='#'">
     <br>
-    <input type="button" value="ok" onClick="location.href='#'">
+    <br>
     
     </form>
     
