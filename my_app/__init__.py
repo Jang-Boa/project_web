@@ -15,9 +15,10 @@ def create_app():
     migrate.init_app(app,db)
 
     # BluePrint
-    from .views import main_views, auth_views
+    from .views import main_views, auth_views, reco_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(auth_views.bp)
+    app.register_blueprint(reco_views.bp)
 
     # import models
     from .models import models

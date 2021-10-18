@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <center>
+    <h3>어떤 차량을 원하시나요</h3>
+    <hr>
+    </center>   
+</div>
+
+<div align="center">
+<div align="center">
+<form method="POST" action="/prefer">
+    <div class='choice'>
+    <h5> 가격 </h5>
+    <select id="price" name = "price" size = 7>
+        <option value="100">1000 이하</option><br>
+        <option value="1000">1000-2000</option><br>
+        <option value="2000">2000-3000</option><br>
+        <option value="3000">3000-4000</option><br>
+        <option value="4000">4000-5000</option><br>
+        <option value="5000">5000 이상</option><br>
+        <option value="0">상관없다</option><br>
+    </select></div>
+    
+    <div class='choice'>
+    <h5> 인원 </h5>
+    <select id="people" name = "people" size = 4>
+        <option value="5">5인승</option><br>
+        <option value="7">7인승</option><br>
+        <option value="9">9인승</option><br>
+        <option value="0">상관없다</option><br>
+    </select></div>
+    
+    <div class='choice'>
+    <h5> 차종 </h5>
+    <select id="type" name = "type" size = 7>
+        <option value="경형">경형</option><br>
+        <option value="소형">소형</option><br>
+        <option value="준중형">준중형</option><br>
+        <option value="중형">중형</option><br>
+        <option value="준대형">준대형</option><br>
+        <option value="대형">대형</option><br>
+        <option value="0">상관없다</option><br>
+    </select></div>
+
+    <div class='choice'>
+    <h5> 연비 </h5>
+    <select id="fuel" name = "fuel" size = 6>
+        <option value="1">1등급(16km/l~)</option><br>
+        <option value="2">2등급(~15.9km/l)</option><br>
+        <option value="3">3등급(~13.7km/l)</option><br>
+        <option value="4">4등급(~11.5km/l)</option><br>
+        <option value="5">5등급(~9.3km/l)</option><br>
+        <option value="0">상관없다</option><br>
+    </select></div>
+
+    <div class='choice'>
+    <h5> 선호하는 제조사 </h5>
+    <select id="manufacturer" name = "manufacturer" size = 7>
+        <option value="현대">현대</option><br>
+        <option value="기아">기아</option><br>
+        <option value="벤츠">벤츠</option><br>
+        <option value="제네시스">제네시스</option><br>
+        <option value="BMW">BMW</option><br>
+        <option value="쉐보레">쉐보레</option><br>
+        <option value="0">상관없다</option><br>
+    </select></div>
+
+    <br>
+    <br>
+    <br>
+    <input type="button" value="ok" onClick="location.href='#'">
+    
+    </form>
+    
+    
+</div>
+{% endblock %}
