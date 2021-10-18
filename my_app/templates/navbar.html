@@ -7,6 +7,13 @@
     </button>
 
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+        {% if g.user %} <!-- 사용자의 로그인 유무, 로그인 되어 있을 때 -->
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+            </li>
+        </ul>
+        {% else %} <!-- 로그인 되어 있지 않을 때 -->
         <ul class="navbar-nav">
             <li class="nav-item ">
                 <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
@@ -15,5 +22,6 @@
                 <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
             </li>
         </ul>
+        {% endif %}
     </div>
 </nav>

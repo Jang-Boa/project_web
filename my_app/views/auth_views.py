@@ -1,5 +1,5 @@
 # 회원가입 뷰
-from flask import Blueprint, url_for, render_template, flash, request, session
+from flask import Blueprint, url_for, render_template, flash, request, session, g
 from flask.typing import URLValuePreprocessorCallable
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
@@ -41,6 +41,20 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.index')) # 메인 홈페이지로 리디렉션
         flash(error)
     return render_template('auth/login.html', form=form)
+
+@bp.before_app_request # 이 애너테이션이 적용된 함수는 라우트 함수보다 먼저 실행된다.
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id is None:
+        g.user = None # g는 플라스크에서 제공하는 컨텍스트 변수이다. 이 변수는 request 변수와 마찬가지로 [요청 -> 응답] 과정에서 유효하다.
+    else:
+        g.user = User.query.get(user_id)
+
+# create logout function
+@bp.route('/logout/')
+def logout():
+    session.clear() # session 값 삭제
+    return redirect(url_for('main.index')) # 메인 홈페이지로 되돌아가기 
