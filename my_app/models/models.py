@@ -12,6 +12,7 @@ class Car(db.Model):
     types = db.Column(db.String(32), nullable=False) # 차종
     price1 = db.Column(db.Integer, nullable=False) # 최소 가격
     price2 = db.Column(db.Integer, nullable=False) # 최대 가격
+    price_avg = db.Column(db.Integer, nullable=True, server_default='1') # 평균 가격
     fuel_efficiency = db.Column(db.String(32), nullable=False) # 연비
     fuel = db.Column(db.String(32), nullable=False) # 차 연료 
     image = db.Column(db.String(32), nullable=False) # 차 이미지

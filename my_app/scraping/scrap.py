@@ -47,6 +47,7 @@ def get_img(importation,page_num=1):
     car_types = []
     car_prices_1 = []
     car_prices_2 = []
+    car_prices_avg = []
     fuel_efficiencies = []
     fuels = []
 
@@ -68,17 +69,21 @@ def get_img(importation,page_num=1):
             if car_price == '가격정보없음':
                 price1 = None
                 price2 = None
+                price_avg = None
             else:
                 price = car_price.split('\n')[2]
                 price = re.sub(r'[^0-9,~]','',price)
                 if '~' in price:
                     price1 = int(price.split('~')[0].replace(',',''))
                     price2 = int(price.split('~')[1].replace(',',''))
+                    price_avg = (price1 + price2)/2
                 else:
                     price1 = int(price.replace(',',''))
                     price2 = None
+                    price_avg = price1
             car_prices_1.append(price1)
             car_prices_2.append(price2)
+            car_prices_avg.append(price_avg)
 
             fuel_efficiency = car.select('ul > li > span > span',{'class':'ell'})[0].text.strip('\n') # 연비 
             fuel_efficiencies.append(fuel_efficiency)
@@ -92,7 +97,7 @@ def get_img(importation,page_num=1):
             # # img_lst.append(image)
             # lst.append([name, company, car_birth, car_type, price1, price2, fuel_efficiency, f, image])
     
-    cars = [data for data in zip(names,companies,car_births,car_types,car_prices_1,car_prices_2,fuel_efficiencies,fuels,images)]
+    cars = [data for data in zip(names,companies,car_births,car_types,car_prices_1,car_prices_2,car_prices_avg,fuel_efficiencies,fuels,images)]
 
     n = len(cars) # number of crawled car data
     print(f"총 {n}개의 {car_birth} 데이터를 수집하였습니다.")

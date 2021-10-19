@@ -1,9 +1,11 @@
 # recommend route
 from flask import Blueprint, url_for, render_template, request, g
+from sqlalchemy.sql.expression import func
 
 from my_app import db
 from my_app.service.uploader import save_csv, insert_file
 from my_app.models.models import Car
+from my_app.service.recommend import prediction
 
 bp = Blueprint('reco', __name__, url_prefix='/recommend')
 
@@ -18,7 +20,5 @@ def recommend():
 @bp.route('/results/',methods=('GET','POST'))
 def result():
     if request.method == 'GET':
-        manufacturer_text = request.args.get('manufacturer')
-        if manufacturer_text != 0:
-            select = Car.query.filter_by(company=manufacturer_text).first_or_404()
-        return render_template('reco/results.html',select=select)
+        res = prediction()
+        return render_template('reco/results.html', res=res)

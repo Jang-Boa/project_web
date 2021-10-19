@@ -22,8 +22,8 @@ def save_csv(page_num):
     imports = get_img('Y',page_num) # 수입차 10 페이지의 데이터 크롤링
     # car_data = get_img(importation,page_num)
 
-    domestics_table = pd.DataFrame(domestics,columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','fuel_efficiencies','fuels','images'])
-    imports_table = pd.DataFrame(imports,columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','fuel_efficiencies','fuels','images'])
+    domestics_table = pd.DataFrame(domestics,columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','car_prices_avg','fuel_efficiencies','fuels','images'])
+    imports_table = pd.DataFrame(imports,columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','car_prices_avg','fuel_efficiencies','fuels','images'])
     # car_table = pd.DataFrame(car_data, columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','fuel_efficiencies','fuels','images'])
 
     # car_table = pd.DataFrame(columns=['names','companies','car_births','car_types','car_prices_1','car_prices_2','fuel_efficiencies','fuels','images'])
@@ -52,6 +52,7 @@ def insert_file():
                             types=row['car_types'],
                             price1=row['car_prices_1'],
                             price2=row['car_prices_2'],
+                            price_avg=row['car_prices_avg'],
                             fuel_efficiency=row['fuel_efficiencies'],
                             fuel=row['fuels'],
                             image=row['images'])
