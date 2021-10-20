@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
+
 <div>
     <center>
-    <br>
-    <br>
     <br>
     <h3>어떤 차량을 원하시나요</h3>
     <hr>
@@ -45,6 +45,12 @@
         <option value="대형">대형</option><br>
     </select></div>
 
+    <!-- <div class='choice'>
+    <p> 예시 </p>
+    <label><input type='checkbox' name='type' value='0'> 상관없다 </label>
+    <label><input type='checkbox' name='type' value='경형'> 경형 </label>
+    </div> -->
+
     <div class='choice'>
     <br><h5> 연비 </h5>
     <select id="fuel" name = "fuel_effi" >
@@ -79,8 +85,7 @@
 
     <br>
     <br>
-    <input type="submit" value="제출하기" onClick="location.href='#'">
-    <input type="reset" value="Reset">
+    <button type="submit" class="btn btn-primary">제출하기</button>
     <br>
     <br>
     

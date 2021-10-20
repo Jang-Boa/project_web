@@ -1,28 +1,31 @@
-<!-- base.html -->
 <!DOCTYPE html>
-
-<html lang='ko'>
+<html lang="ko">
     <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-        <!-- CSS -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>DreamCar</title>
 
-        <title> DreamCar </title>
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{{url_for('static', filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
     </head>
     <body>
-    {% include "navbar.html" %}
+        {% include "navbar.html" %}
+        
+            <!--기본 템플릿 안에 삽입될 내용-->
+        <div class="container-fluid"> 
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div> 
+        </div>
 
-        <!--기본 템플릿 안에 삽입될 내용-->
-        <center>
-        <h1> What kind of Car do you looking for? </h1>
-        </center>
-        {% block content %}
-        {% endblock %}
-        <!-- jQuery JS -->
-        <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
+        <!--  Scripts  -->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{url_for('static', filename='js/materialize.js')}}"></script>
+        <script src="{{url_for('static', filename='js/init.js')}}"></script>
+
     </body>
 </html>

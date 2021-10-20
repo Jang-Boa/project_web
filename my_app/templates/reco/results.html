@@ -9,9 +9,15 @@
     <br>
     {{ res.name }}
     <div>
-    내가 선택한 타입은 
+    
     </div>
-    </center>   
+    </center> 
+
+
+    <br><br><br>
+    <center>
+    <button type="submit" class="btn btn-primary" onClick="location.href='{{ url_for('reco.recommend') }}'">되돌아가기</button>
+    </center>
 </div>
 
 {% endblock %}
